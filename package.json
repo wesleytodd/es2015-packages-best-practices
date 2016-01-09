@@ -1,0 +1,41 @@
+{
+  "name": "es2015-packages-best-practices",
+  "version": "1.0.0",
+  "description": "An example project to illustrate best practices for publishing es2015 modules",
+  "main": "index.js",
+  "browser": "browser.js",
+  "scripts": {
+    "prepublish": "in-publish && npm run babel",
+    "build": "npm run babel && npm run dist && npm run min",
+    "babel": "babel src --out-dir lib",
+    "dist": "mkdir -p dist && browserify browser.js -s Logger -t [babelify] -o dist/logger.js",
+    "min": "uglifyjs dist/logger.js -o dist/logger.min.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wesleytodd/es2015-packages-best-practices.git"
+  },
+  "keywords": [
+    "es2015",
+    "example",
+    "babel",
+    "browserify"
+  ],
+  "author": "Wes Todd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wesleytodd/es2015-packages-best-practices/issues"
+  },
+  "homepage": "https://github.com/wesleytodd/es2015-packages-best-practices#readme",
+  "devDependencies": {
+    "babel-cli": "^6.4.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.2",
+    "uglify-js": "^2.6.1"
+  },
+  "dependencies": {
+    "in-publish": "^2.0.0"
+  }
+}
