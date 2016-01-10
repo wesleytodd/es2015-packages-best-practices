@@ -42,7 +42,6 @@ In the package.json you can easily automate some of the build steps using npm sc
 ```json
 {
   "scripts": {
-	"prepublish": "in-publish && npm run build",
     "build": "npm run babel && npm run dist && npm run min",
     "babel": "babel src --out-dir lib",
     "dist": "mkdir -p dist && browserify browser.js -s Logger -t [babelify] -o dist/logger.js",
@@ -51,7 +50,7 @@ In the package.json you can easily automate some of the build steps using npm sc
 }
 ```
 
-The only caveat with this prepublish script is that prepublish is run at a bunch on [non-intuitave times](https://github.com/npm/npm/issues/10074) and you don't want your users running your compile step.  The `in-publish` module is designed to stop this behavior and only run your steps before actually publishing.
+Sadly, the caveat with this prepublish script is that prepublish is run at a bunch on [non-intuitave times](https://github.com/npm/npm/issues/3059) and you don't want your users running your compile step.  Soon a [new script](https://github.com/npm/npm/issues/10074) will be added called `prepare` which sill solve this.  Until then you need to remember to run `npm run build` before `npm publish`.
 
 ### Exports
 
