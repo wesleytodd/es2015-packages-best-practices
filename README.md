@@ -1,6 +1,6 @@
 # ES2015 Package Best Practices
 
-This is an example module that shows the best practices for authors when publishing ES2015 packages.  With the proliferation of build tools it is even more important to maintain a set of best practices for package authors.
+This is an example module that shows some best practices for authors when publishing ES2015 packages.  As a part of the javascript community I think we can all agree that it has gotten intimidating to keep up the tools and best practices.  It is up to us, package authors, to document the best practices when we see them and provide good examples so others can eaisly follow allong.  Hopefully this resource is a start.
 
 ### ES 2015 Source Modules
 
@@ -35,6 +35,14 @@ If the module has any component that cannot be loaded on either the server or cl
 }
 ```
 
+### Exports
+
+The new ES2015 module syntax does not support exporting single functions.  This is a very common practice in node/commonjs modules.  So to get around this, wrap your module in a file that just exports the function in the standard node way.  For example:
+
+```javascript
+module.exports = require('./lib/index').default;
+```
+
 ### NPM Scripts
 
 In the package.json you can easily automate some of the build steps using npm scripts.  Usually I setup 3 or 4 depending on the package:
@@ -52,14 +60,6 @@ In the package.json you can easily automate some of the build steps using npm sc
 
 Sadly, the caveat with this prepublish script is that prepublish is run at a bunch on [non-intuitave times](https://github.com/npm/npm/issues/3059) and you don't want your users running your compile step.  Soon a [new script](https://github.com/npm/npm/issues/10074) will be added called `prepare` which sill solve this.  Until then you need to remember to run `npm run build` before `npm publish`.
 
-### Exports
-
-The new ES2015 module syntax does not support exporting single functions.  This is a very common practice in node/commonjs modules.  So to get around this, wrap your module in a file that just exports the function in the standard node way.  For example:
-
-```javascript
-module.exports = require('./lib/index').default;
-```
-
 ## Contributions
 
-This stuff changes ALL THE TIME, so contributions are welcome!  Just open PR's against master.
+This stuff changes ALL THE TIME, and I do not use all the tools that are out there, so contributions are welcome!  Just open an issue or PR's against master.
