@@ -20,7 +20,7 @@ The babel configuration can go either in a `.babelrc` file or in the package.jso
 
 ### What to Publish to NPM
 
-ALWAY PUBLISH COMPILED FILES. Usually don't publish the source. Shipping the source files bloats the install size.  On small projects this might seem fine, but on larger projects install times can take minutes and deployments can fill up disks.  To do this use the `.npmignore` file in the root of your project (see [here for detailed information](https://docs.npmjs.com/misc/developers#keeping-files-out-of-your-package)).  The main files to ignore are `src`, `dist` and any examples or tests you have.  Don't ignore the readme because that that is often helpful when people are exploring the module.
+ALWAY PUBLISH COMPILED FILES. Usually don't publish the source. Shipping the source files bloats the install size.  On small projects this might seem fine, but on larger projects install times can take minutes and deployments can fill up disks.  To do this use the `.npmignore` file in the root of your project (see [here for detailed information](https://docs.npmjs.com/misc/developers#keeping-files-out-of-your-package)).  The main files to ignore are `src`, `dist` and any examples or tests you have.  Don't ignore the readme because that is often helpful when people are exploring the module.
 
 ### Browser Modules
 
